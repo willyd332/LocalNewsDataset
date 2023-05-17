@@ -4,6 +4,10 @@
     - HEARST rewrite
       - Scraping newspapers and broadcasting stations
       - Only the website and station name were available for broadcasting. No social media links, no state/city information.
+    - Meredith removal
+      - In 2021 Dotdash acquired Meredith and now the list of local-news is no longer available
+    - Addition of Gray TV
+      - To replace Meredith, I added [Gray TV's list of companies](https://gray.tv/companies)
 
 
 

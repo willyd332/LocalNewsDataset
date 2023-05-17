@@ -5,6 +5,7 @@ import time
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 import pandas as pd
+import json
 from tqdm import tqdm as tqdm
 from bs4 import BeautifulSoup
 
@@ -233,61 +234,98 @@ def download_nexstar():
     df.to_csv(nexstar_file, sep='\t', index=False)
     
 
-def download_meredith():
-    '''Scrapes ther Meredith homepage.'''
-    def parse_channel_html(channel_html):
-        '''Parses bs4 html to create a dictionary (row in the dataset)'''
-        station = channel_html.get('data-station-name')
-        geo = channel_html.find('div', class_='city').text
-        city, state = geo.split(', ')
-        website = channel_html.find('div', class_='links').find('a').get('href')
-        try:
-            facebook = channel_html.find('a', class_='icon-FACEBOOK icon').get('href')
-        except:
-            facebook = None
-        try:
-            google = channel_html.find('a', class_='icon-GOOGLE icon').get('href')
-        except:
-            google = None
-        try:
-            twitter = channel_html.find('a', class_='icon-TWITTER icon').get('href')
-        except:
-            twitter = None 
+def extract_gray():
+    '''
+    Extracts metadata about Gray TV stations from a local JSON file and saves it to a CSV file (Downloades 05/17/2023).
 
-        data = dict(
-            station = station,
-            city = city,
-            state = state,
-            website = website,
-            network = None,
-            facebook = facebook,
-            twitter = twitter,
-            google = google
-        )
+    This function loads JSON data from a specified local file and extracts relevant fields such as title, city, state, and website. 
 
-        return data
+    Note: The function requires the json, pandas, and os libraries.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    '''
+    # Load the JSON data from a local file
+    with open('../data/gray_tv_additions.json') as file:
+        data = json.load(file)
     
-    print("Downloading Meredith")
-    url = 'http://www.meredith.com/local-media/broadcast-and-digital'
-    r = requests.get(url, headers=headers)
-    soup = BeautifulSoup(r.content, 'lxml')
-    channels = soup.find_all('li', class_=re.compile('^dot station-id-*'))
-    metadata = []
-    for i, channel in tqdm(enumerate(channels)):
-        channel_meta = parse_channel_html(channel)
-        metadata.append(channel_meta)
-    df = pd.DataFrame(metadata)
-    df['broadcaster'] = 'Meredith'
-    df['source'] = 'meridith.com'
-    df['collection_date'] = today
+    # Extract relevant fields from the JSON data
+    columns = ['title', 'city', 'state', 'website']
+    extracted_data = [{col: item[col] for col in columns} for item in data]
+
+    # Create a DataFrame from the extracted data
+    df = pd.DataFrame(extracted_data)
+
+    df['broadcaster'] = 'Gray TV'
+    df['source'] = 'https://gray.tv/'
+    df['collection_date'] = datetime.datetime(2023, 5, 17, 10, 56, 6, 89876)
     
-    if os.path.exists(meredith_file):
+    if os.path.exists(gray_file):
         # appending to old
-        df_ = pd.read_csv(meredith_file, sep='\t')
-        df = df[~df['station'].isin(df_['station'])]
+        df_ = pd.read_csv(gray_file, sep='\t')
+        df = df[~df['title'].isin(df_['title'])]
         df = df_.append(df) 
+
+    df.to_csv(gray_file, index=False, sep='\t')
+
+# def download_meredith():
+#     '''Scrapes ther Meredith homepage.'''
+#     def parse_channel_html(channel_html):
+#         '''Parses bs4 html to create a dictionary (row in the dataset)'''
+#         station = channel_html.get('data-station-name')
+#         geo = channel_html.find('div', class_='city').text
+#         city, state = geo.split(', ')
+#         website = channel_html.find('div', class_='links').find('a').get('href')
+#         try:
+#             facebook = channel_html.find('a', class_='icon-FACEBOOK icon').get('href')
+#         except:
+#             facebook = None
+#         try:
+#             google = channel_html.find('a', class_='icon-GOOGLE icon').get('href')
+#         except:
+#             google = None
+#         try:
+#             twitter = channel_html.find('a', class_='icon-TWITTER icon').get('href')
+#         except:
+#             twitter = None 
+
+#         data = dict(
+#             station = station,
+#             city = city,
+#             state = state,
+#             website = website,
+#             network = None,
+#             facebook = facebook,
+#             twitter = twitter,
+#             google = google
+#         )
+
+#         return data
+    
+#     print("Downloading Meredith")
+#     url = 'http://www.meredith.com/local-media/broadcast-and-digital'
+#     r = requests.get(url, headers=headers)
+#     soup = BeautifulSoup(r.content, 'lxml')
+#     channels = soup.find_all('li', class_=re.compile('^dot station-id-*'))
+#     metadata = []
+#     for i, channel in tqdm(enumerate(channels)):
+#         channel_meta = parse_channel_html(channel)
+#         metadata.append(channel_meta)
+#     df = pd.DataFrame(metadata)
+#     df['broadcaster'] = 'Meredith'
+#     df['source'] = 'meridith.com'
+#     df['collection_date'] = today
+    
+#     if os.path.exists(meredith_file):
+#         # appending to old
+#         df_ = pd.read_csv(meredith_file, sep='\t')
+#         df = df[~df['station'].isin(df_['station'])]
+#         df = df_.append(df) 
         
-    df.to_csv(meredith_file, index=False, sep='\t')
+#     df.to_csv(meredith_file, index=False, sep='\t')
 
 
 def download_hearst():
@@ -599,7 +637,7 @@ def download_all_datasets():
     Downloads datasets from the 7 sources.
     '''
     download_hearst()
-    download_meredith()
+    # download_meredith()
     download_nexstar()
     download_sinclair()
     download_tribune()
