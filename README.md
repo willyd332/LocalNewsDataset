@@ -8,6 +8,8 @@
       - In 2021 Dotdash acquired Meredith and now the list of local-news is no longer available
     - Addition of Gray TV
       - To replace Meredith, I added [Gray TV's list of companies](https://gray.tv/companies)
+    - Sinclair rewrite
+      - The new website updates the information after loading which makes a headless browser necessary
 
 
 

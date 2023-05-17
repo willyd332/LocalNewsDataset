@@ -1,9 +1,13 @@
 import re
 import requests
 import time
-
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import json
 from tqdm import tqdm as tqdm
@@ -98,51 +102,45 @@ def download_tribune():
 
 
 def download_sinclair():
-    '''Scrapes ther Sinclair homepage.'''
-    def camel_split(text):
-        geo_split = re.findall(r'[A-Z](?:[a-z]+|[A-Z]*(?=[A-Z]|$))', text)
-        state = geo_split[-1]
-        city = ' '.join(geo_split[:-1])
-        return city, state
+    '''
+    Downloads metadata about Sinclair broadcasting channels.
 
-    def parse_channel_html(channel_html):
-        '''Parses bs4 html to create a dictionary (row in the dataset)'''
-        network = channel_html.get('class')[2]
-        city, state = camel_split(channel_html.get('class')[-2])
-        website = channel_html.find('a', class_='work-image').get('href')
-        if website == 'http://sbgi.net':
-            website = None
-        station = channel_html.find('span', class_='callLetters').text
-        geo = channel_html.find('span', class_='cityState').text.replace(' - ', '')
+    The function scrapes the Sinclair homepage to collect information about the broadcasting channels. 
+    It uses Selenium with a headless Chrome browser to load the webpage and BeautifulSoup to parse the HTML. 
+    The data is then extracted and stored in a DataFrame.
 
-        row = dict(
-            network = network,
-            city = city,
-            state = state,
-            website = website,
-            station = station,
-            geo = geo
-        )
+    The final DataFrame includes details such as location, station, affiliation, and website.
 
-        return row
-    
+    Note: The function requires the Selenium, BeautifulSoup, pandas, and lxml libraries.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    '''
     print("Downloading Sinclair")
-    url = 'http://sbgi.net/tv-channels/'
-    r = requests.get(url, headers=headers)
-    soup = BeautifulSoup(r.content, 'lxml')
-    port = soup.find('div', class_='portfolio')
-    channels = port.find_all('div', class_=re.compile('^item five*'))
-    metadata = []
-    for channel in tqdm(channels):
-        try:
-            channel_meta = parse_channel_html(channel)
-            metadata.append(channel_meta)
-        except:
-            print(channel)
+    
+    # Configure Selenium with a headless Chrome browser
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(options=chrome_options)
 
-    df = pd.DataFrame(metadata)
+    url = 'http://sbgi.net/tv-stations/'
+    driver.get(url)
+
+    # Wait for the page to load
+    wait = WebDriverWait(driver, 10)
+    table_wrapper = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'table-wrapper')))
+
+    soup = BeautifulSoup(driver.page_source, 'lxml')
+    main = soup.find('main')
+    table = main.find('div', class_='table-wrapper')
+    df = pd.read_html(str(table))[0]
+    df.drop(["Status", "DMA Rank"], axis=1, inplace=True)
+    df.rename(columns={"Stations": "station", "Market": "location"}, inplace=True)
     df['broadcaster'] = 'Sinclair'
-    df['source'] = 'sbgi.net'
+    df['source'] = 'https://sbgi.net/'
     df['collection_date'] = today
     
     if os.path.exists(sinclair_file):
