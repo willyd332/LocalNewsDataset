@@ -291,51 +291,143 @@ def download_meredith():
 
 
 def download_hearst():
-    '''Scrapes ther Hearst homepage.'''
+    '''
+    Downloads metadata about Hearst newspapers and broadcasting channels.
+
+    The final DataFrame includes details such as website, name, address, phone, Twitter, Facebook, LinkedIn, 
+    Instagram, station name (for broadcasting channels), broadcaster (set as "Hearst"), source (set as 
+    "https://www.hearst.com/"), and collection date.
+
+    Note: The function requires the requests, BeautifulSoup, and pandas libraries.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    '''
+    
+    # Parse the broadcasting channels
     def parse_channel_html(channel_html):
         '''Parses bs4 html to create a dictionary (row in the dataset)'''
-        website = channel_html.find('a').get('href')
-        station = channel_html.find('h3').text
-        geo = channel_html.find('div', class_='freeform').text.strip()
-        state = geo.split(',')[-1].strip().upper()
-        city = ' '.join(geo.split(',')[:-1]).strip().replace('\r\n', '')
+        website_tag = channel_html.find('a')
 
-        try:
-            twitter = channel_html.find('a', class_='circle-icon share-twitter').get('href')
-        except:
-            twitter = None
-        try:
-            fb = channel_html.find('a', class_='circle-icon share-fb').get('href')
-        except:
-            fb = None
-
-        network = None
+        # Sometime there are brand-cards that don't have any metadata attached
+        if website_tag is not None:
+            website = website_tag.get('href')
+        else:
+            return None
+        
+        # Extract station name from alt-text
+        img_container = soup.find('div', class_='brand-logo-caption-with-text')
+        image_element = img_container.find('img')
+        station = alt_text = image_element['alt']
 
         context = dict(
-            network = network,
-            city = city,
-            state = state,
             website = website,
             station = station,
-            twitter = twitter,
-            facebook = fb
+            name = station,
+            phone = "",
+            address = "",
+            twitter = "",
+            facebook = "",
+            linkedin = "",
+            instagram = ""
         )
 
         return context
     
+    
+    # Parse the newspaper pages
+    def parse_newspaper_html(newspaper_html):        
+        '''Parses bs4 html to create a dictionary (row in the dataset)'''
+        
+        href = newspaper_html.find('a').get('href')
+        sub_r = requests.get(f'https://www.hearst.com{href}', headers=headers)
+        sub_soup = BeautifulSoup(sub_r.content, 'lxml')
+        
+        # Extract newspaper information
+        data_section = sub_soup.find('section', id='content')
+        name = data_section.find("h1").text.strip()
+        
+        main_column = data_section.find('div', id='layout-column_column-1')
+        column_divs = main_column.find_all('div', recursive=False)
+
+        contact_info = column_divs[2].find('div', class_="brand-contact-info")
+        website = contact_info.find('p', class_="brand-address").find('a').get('href')
+        
+        address_info = column_divs[2].find('div', class_='address-container')
+        address_list = [p.text.strip() for p in address_info.find_all('p')]
+        phone = address_list[-1]
+        address = ' '.join(address_list[:-1])
+            
+        social_info = column_divs[2].find('ul', class_="brand-icons")
+        twitter = ''
+        facebook = ''
+        linkedin = ''
+        instagram = ''
+        for link in social_info.find_all('a'):
+            img_alt = link.find('img')['alt']
+            href = link['href']
+            if 'twitter' in img_alt.lower():
+                twitter = href
+            elif 'facebook' in img_alt.lower():
+                facebook = href
+            elif 'linkedin' in img_alt.lower():
+                linkedin = href
+            elif 'instagram' in img_alt.lower():
+                instagram = href
+        
+        column_divs[2]
+
+        context = dict(
+            website = website,
+            name = name,
+            address = address,
+            phone = phone,
+            twitter = twitter,
+            facebook = facebook,
+            linkedin = linkedin,
+            instagram = instagram,
+            station = ""
+        )
+
+        return context
+    
+    # -- -- -- -- -- -- -- -- -- -- -- -- --
+    
     print("Downloading Hearst")
-    url = 'http://www.hearst.com/broadcasting/our-markets'
-    r = requests.get(url, headers=headers)
+    broadcasting_url = "https://www.hearst.com/broadcasting"
+    newspaper_url = "https://www.hearst.com/newspapers"
+    
+    # Get broadcasting data
+    r = requests.get(broadcasting_url, headers=headers)
     soup = BeautifulSoup(r.content, 'lxml')
-    channels = soup.find_all('div', class_='td')
-    metadata = []
-    for i, channel in tqdm(enumerate(channels)):
+    parent_div = soup.find('div', class_='brand-card')
+    channels = parent_div.find_all('div', recursive=False)
+    channel_metadata = []
+    for channel in channels:
         channel_meta = parse_channel_html(channel)
-        metadata.append(channel_meta)
-    df = pd.DataFrame(metadata)
+        if channel_meta is not None:
+            channel_metadata.append(channel_meta)
+    
+    # get newspaper data
+    r = requests.get(newspaper_url, headers=headers)
+    soup = BeautifulSoup(r.content, 'lxml')
+    parent_div = soup.find('div', class_='brand-card')
+    newspapers = parent_div.find_all('div', recursive=False)
+    newspaper_metadata = []
+    for newspaper in newspapers:
+        newspaper_meta = parse_newspaper_html(newspaper)
+        newspaper_metadata.append(newspaper_meta)  
+    
+    broadcast_df = pd.DataFrame(channel_metadata)
+    newspaper_df = pd.DataFrame(newspaper_metadata)
+    
+    df = pd.concat([broadcast_df, newspaper_df])
+    
     df['broadcaster'] = 'Hearst'
-    df['source'] = 'hearst.com'
-    df = df.iloc[:33]
+    df['source'] = 'https://www.hearst.com/'
     df['collection_date'] = today
     
     if os.path.exists(hearst_file):
@@ -409,67 +501,83 @@ def download_stationindex():
     
 def download_usnpl():
     '''
-    usnpl has metadata about many newspapers in different states.
+    Retrieves metadata about newspapers in different states from the usnpl.com website
+    and saves the information in a CSV file.
+
+    Parses the HTML response to extract newspaper information when available (state, city, name,
+    website, Twitter, Facebook, Instagram, YouTube, address, editor, and phone number.
+
+    Note: The function requires the `requests`, `BeautifulSoup`, and `pandas` libraries.
+
+    Parameters:
+        None
+
+    Returns:
+        None
     '''
-    def parse_row(soup):
-        '''
-        For each media publication in the html, 
-        we're going to strip the city name, the publication name,
-        the website url, and social links (if they exist)
 
-        The input `soup` is a beautiful soup object.
-        the output is a dict of the parsed fields.
-        '''
-        city = soup.find('b').text
-        name = soup.find('a').text
-        web = soup.find('a').get('href')
-
-        fb = soup.find('a', text='F')
-        if fb:
-            fb= fb.get('href')
-        tw = soup.find('a', text='T')
-        yt =soup.find('a', text='V')
-        if yt:
-            yt = yt.get('href')
-        if tw:
-            tw=tw.get('href').replace('http://www.twitter.com/', '').rstrip('/')
-
-        return {
-            'Facebook' : fb,
-            'Twitter_Name' : tw,
-            'Youtube' : yt,
-            'Name' : name,
-            'Website' : web
-        }
-    
-    print("Downloading USNPL")
     sites = []
+    
+#    for state in states:
     for state in states:
-        url = 'https://www.usnpl.com/search/state?state={}'.format(state)
+        url = f'https://www.usnpl.com/search/state?state={state}'
         r = requests.get(url, headers=headers)
         soup = BeautifulSoup(r.content, 'lxml')
+        
+        main_table = soup.find('table', class_='table table-sm')
+        
+        if main_table:
+            rows = main_table.find_all('tr')
+            # Remove non-data rows
+            rows = [row for row in rows if 'table-dark' not in row.get('class', [])]
+            current_city = ""
+            for row in rows:
+                city_element = row.find('h4', class_='result_city')
+                if city_element:
+                    current_city = city_element.text.strip()
+                    continue
+                # Extract data From the row
+                data_points = row.find_all('td')
+                if len(data_points) >= 6:
+                    newspaper_name = data_points[0].find('a').text.strip() if data_points[0].find('a') else ''
+                    usnpl_page = data_points[0].find('a')['href'] if data_points[0].find('a') else ''
+                    website = data_points[1].find('a')['href'] if data_points[1].find('a') else ''
+                    twitter = data_points[2].find('a')['href'] if data_points[2].find('a') else ''
+                    facebook = data_points[3].find('a')['href'] if data_points[3].find('a') else ''
+                    instagram = data_points[4].find('a')['href'] if data_points[4].find('a') else ''
+                    youtube = data_points[5].find('a')['href'] if data_points[5].find('a') else ''
+                else:
+                    continue
 
-        data_possibilities = soup.find_all('div' ,{"id" : 'data_box'})
-        for i, raw_table in enumerate(data_possibilities[1:]):
-            j = 1 if i == 0 else 0
-            medium = raw_table.find('h3').text
-            if medium == 'Newspapers':
-                data_table = str(raw_table).split('<br/><br/>\n</div>\n')[j]
-                entries_to_parse = data_table.rstrip('</div>').split('\n<br/>\n')
-            elif medium in ['Magazines', 'College Newspapers']:
-                data_table = str(raw_table).split('<title>Untitled Document</title>')[1]
-                entries_to_parse = data_table.rstrip('</div>').split('\n<br/>\n')
-            else:
-                break
+                # Extract Data From the Newspaper Page
+                sub_url = f"https://www.usnpl.com/search/{usnpl_page}"
+                r = requests.get(sub_url, headers=headers)
+                sub_soup = BeautifulSoup(r.content, 'lxml')
+                sub_table = sub_soup.find_all('tr')
+                address_element = sub_table[1]
+                address_parts = [part.strip() for part in address_element.stripped_strings]
+                address = ' '.join(address_parts)
+                editor = sub_soup.find('strong', text='Editor:').find_next_sibling(text=True).strip()
+                phone = sub_soup.find('strong', text='Phone:').find_next_sibling(text=True).strip()
 
-            for row in tqdm(entries_to_parse):
-                row = row.strip('\r').strip('\n')
-                if row:
-                    entry = parse_row(BeautifulSoup(row, 'lxml'))
-                    entry['Geography'] = state.upper()
-                    entry['Medium'] = medium
-                    sites.append(entry)
-            time.sleep(1)
+                # Parsed Object
+                parsed_object = {
+                    "State": state,
+                    "City": current_city,
+                    "Name": newspaper_name,
+                    "Website": website,
+                    "Twitter": twitter,
+                    "Facebook": facebook,
+                    "Instagram": instagram,
+                    "Youtube": youtube,
+                    "Address": address,
+                    "Editor": editor,
+                    "Phone": phone
+                }
+                
+                # Add to the list
+                sites.append(parsed_object)
+
     df = pd.DataFrame(sites)
     df['Website'] = df['Website'].str.rstrip('/')
     df['source'] = 'usnpl.com'
@@ -482,6 +590,8 @@ def download_usnpl():
         df = df_.append(df) 
     
     df.to_csv(usnpl_file, index=False, sep='\t')
+
+    print(df)
     
     
 def download_all_datasets():
