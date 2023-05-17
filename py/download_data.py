@@ -11,6 +11,14 @@ from bs4 import BeautifulSoup
 from config import *
 
 '''
+This is a forked version of the original script.
+
+The original script was written by Leon Yin and can be found at NYU's CSMaP.
+
+Updated By Will Dinneen
+On 2023-05-16
+
+---
 This script contains scrapers for tribune, sinclair, nexstar, hearst, stationindex, and usnpl.
 
 Metadata about the stations in each of the stations is saved as tsvs.
@@ -437,7 +445,7 @@ def download_usnpl():
     print("Downloading USNPL")
     sites = []
     for state in states:
-        url = 'http://www.usnpl.com/{}news.php'.format(state)
+        url = 'https://www.usnpl.com/search/state?state={}'.format(state)
         r = requests.get(url, headers=headers)
         soup = BeautifulSoup(r.content, 'lxml')
 
