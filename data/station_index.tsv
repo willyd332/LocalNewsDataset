@@ -1891,3 +1891,27 @@ city	collection_date	id	owner	source	state	station	station_info	subchannels	webs
  Helena	2018-08-02 14:55:24.612585	" ""NBC 12"""	 Beartooth	stationindex	MT	KTVH	 Digital Full-Power - 180 kW		http://www.ktvh.com/
  Glendive	2018-08-02 14:55:24.612585	" ""KX5"""	 Glendive Broadcasting/Stephen Marks	stationindex	MT	KXGN	 Digital Full-Power - 1 kW	 5.1 CBS, 5.2 NBC	http://www.kxgn.com/
  Glendive	2018-08-02 14:55:24.612585	" ""KQCD translator"""	 North Dakota Television License Sub, L.L.C.	stationindex	MT	K13PL	 Low-Power - 2.63 kW		
+ West Milford	2023-05-17 11:29:07.747954		 Family Stations	stationindex	NJ	WNYJ	 Digital Educational Full-Power - 200 kW		
+ Wilmington	2023-05-17 11:29:07.747954	" ""Me TV 2"""	 Maranatha Broadcasting Company	stationindex	DE	WDPN	 Digital Full-Power - 34 kW	 2.1: MeTV, 2.2: Grit, 2.3: Court TV Mystery, 2.4: Heroes & Icons, 2.5: Retro TV, 2.6: Decades, 2.7: This TV	https://metv2.com/
+ Philadelphia	2023-05-17 11:29:07.747954		 Lehigh Valley Public Telecommunications Corporation	stationindex	PA	WPPT	 Digital Educational Full-Power - 500 kW	 35.1 MHz Worldview, 35.2 World	
+ Washington	2023-05-17 11:29:07.747954	" ""Telemundo 25"""	 NBCUniversal	stationindex	DC	WZDC-CD	 Digial Class-A - 624 kW		http://www.telemundowashingtondc.com
+ Poway	2023-05-17 11:29:07.747954	" ""Telemundo 20 San Diego"""	 NBC Universal	stationindex	CA	KUAN-LD	 Digital Low-Power - 370 kW		https://www.telemundo20.com/
+ Las Vegas	2023-05-17 11:29:07.747954	" ""KEEN 17"""	 Christian Television Network	stationindex	NV	KEEN-CD	 Digital Class-A - 4.1 kW		
+ Memphis	2023-05-17 11:29:07.747954	" ""Local 24"""	 Tegna	stationindex	TN	WATN	 Digital Full-Power - 1000 kW		https://www.localmemphis.com/
+ Naples	2023-05-17 11:29:07.747954	" ""Telemundo Fort Myers-Naples"""	 NBCUniversal	stationindex	FL	WWDT-CD	 Digital Class-A - 15 kW		
+ Flint	2023-05-17 11:29:07.747954		 Central Michigan University	stationindex	MI	WCMU	 Digital Educational Full-Power - 450 kW		https://www.wcmu.org/
+ Suring	2023-05-17 11:29:07.747954	" ""CW 14"""	 Sinclair Broadcast Group	stationindex	WI	WCWF	 Digital Full-Power - 1000 kW		http://cw14online.com/
+ Toledo	2023-05-17 11:29:07.747954	" ""My58"""		stationindex	OH	WMNT-CD	 Digital Class-A - 15 kW		http://www.wmnttv.com/
+ Springfield	2023-05-17 11:29:07.747954	" ""KSPR ABC 33"""	 Gray Television	stationindex	MO	KSPR-LD	 Digital Low-Power - 15 kW	" 33.1 ABC, 
+33.2 The CW, 
+33.3 Antenna TV"	https://www.ky3.com/
+ Springfield	2023-05-17 11:29:07.747954	" ""WCIX49"""	 Nexstar Media Group	stationindex	IL	WCIX	 Digital Full-Power - 49 kW		https://www.wcia.com/
+ Janesville	2023-05-17 11:29:07.747954	" ""Wisconsin's 57"""	 Byrne Acquisition Group	stationindex	WI	WIFS	 Digital Full-Power - 1000 kW	 57.1 Ion Life, 57.2 Movies!, 57.3 Heroes & Icons, 57.4 Stadium, 57.5 QVC, 57.6 Laff TV, 57.7 Escape, 57.8 Grit, 57.9 Ion Television	http://wi57.tv/
+ Colorado Springs	2023-05-17 11:29:07.747954		" 	Christian Television Network"	stationindex	CO	KWHS-LD	 Low-Power - 15 kW		http://kwhstv51.com/
+ Lincoln	2023-05-17 11:29:07.747954	" ""FOX Nebraska"""	 Sinclair Broadcast Group	stationindex	NE	KFXL	 Digital Full-Power - 250 kW		https://foxnebraska.com/
+ Youngstown	2023-05-17 11:29:07.747954	" ""FOX Youngstown"""	 Nexstar Media Group	stationindex	OH	WYFX-LD	 Digital Low-Power - 15 kW	 62.1 Fox, 62.2 MyNetworkTV, 62.3 Ion Television, 62.4 Bounce TV, 62.5 Laff, 62.6 getTV	https://www.wkbn.com/
+ Boise	2023-05-17 11:29:07.747954		" 	Celebration Praise, LLC"	stationindex	ID	KZTN-LD	 Digital Low-Power - 15 kW		
+ Cochran	2023-05-17 11:29:07.747954	" ""GPB"""	 Georgia Public Broadcasting	stationindex	GA	WMUM	 Digital Educational Full-Power - 136 kW	 29.1 GPB/PBS,  29.2 Create,  29.3 GPB Knowledge,  29.4 PBS Kids	https://www.gpb.org/
+ Corpus Christi	2023-05-17 11:29:07.747954	" ""KAJA Telemundo"""	 E. W. Scripps Company	stationindex	TX	K47DF-D	 Digital Class-A - 21.7 kW		
+ Twin Falls	2023-05-17 11:29:07.747954		 Christian Broadcasting of Idaho	stationindex	ID	KYTL-LD	 Digital Low-Power - 15 kW		https://cbitv.com/kytl17/
+ Eureka	2023-05-17 11:29:07.747954	" ""CBS 17"""	 Frontier Radio Management	stationindex	CA	KJRW	 Digital Full-Power - 30 kW	 17.1 KVIQ/CBS	

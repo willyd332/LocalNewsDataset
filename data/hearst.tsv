@@ -1,34 +1,121 @@
-city	facebook	network	state	station	twitter	website	broadcaster	source	collection_date
-Des Moines	https://www.facebook.com/kcci8		IA	KCCI-TV	https://twitter.com/KCCINews	http://www.kcci.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Sacramento/Stockton/Modesto	https://www.facebook.com/KCRA3?fref=ts		CA	KCRA-TV	https://twitter.com/kcranews	http://www.kcra.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Kansas City	https://www.facebook.com/KCWE29?fref=ts		MO	KCWE-TV		http://www.kmbc.com/kcwetv	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Omaha	https://www.facebook.com/ketv7?fref=ts		NE	KETV	https://twitter.com/KETV	http://www.ketv.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Fort Smith/Fayettville	https://www.facebook.com/4029news?fref=ts		AR	KHBS-TV/KHOG-TV	https://twitter.com/4029news	http://www.4029tv.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Kansas City	https://www.facebook.com/kmbc9?fref=ts		MO	KMBC-TV	https://twitter.com/kmbc	http://www.kmbc.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Albuquerque	https://www.facebook.com/KOAT7?fref=ts		NM	KOAT-TV	https://twitter.com/koat7news	http://www.koat.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Oklahoma City	https://www.facebook.com/koco5?fref=ts		OK	KOCO-TV	https://twitter.com/koconews	http://www.koco.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Sacramento/Stockton/Modesto			CA	KQCA-TV		http://www.kcra.com/my58	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Monterey-Salinas	https://www.facebook.com/ksbw8?fref=ts		CA	KSBW-TV	https://twitter.com/ksbw	http://www.ksbw.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Jackson	https://www.facebook.com/16wapt?fref=ts		MS	WAPT-TV	https://twitter.com/16WAPTNews	http://www.wapt.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Baltimore	https://www.facebook.com/wbaltv11		MD	WBAL-TV	https://twitter.com/wbaltv11	http://www.wbaltv.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Boston	https://www.facebook.com/wcvb5		MA	WCVB-TV	https://twitter.com/WCVB	http://www.wcvb.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Greensboro/Winston-Salem	https://www.facebook.com/TriadCW/		NC	WCWG-TV		http://www.wxii12.com/cw	Hearst	hearst.com	2018-08-02 14:55:24.612585
-New Orleans	https://www.facebook.com/wdsutv?fref=ts		LA	WDSU-TV	https://twitter.com/wdsu	http://www.wdsu.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Orlando	https://www.facebook.com/wesh2news		FL	WESH-TV	https://twitter.com/WESH	http://www.wesh.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Lancaster	https://www.facebook.com/wgal8		PA	WGAL-TV	https://twitter.com/WGAL	http://www.wgal.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Milwaukee	https://www.facebook.com/wisn12		WI	WISN-TV	https://twitter.com/WISN12News	http://www.wisn.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Savannah	https://www.facebook.com/WJCLNews		GA	WJCL-TV	https://twitter.com/wjcl_news	http://wjcl.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Orlando	https://www.facebook.com/cw18tv		FL	WKCF-TV		http://www.wesh.com/cw18	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Louisville	https://www.facebook.com/wlkynews		KY	WLKY-TV	https://twitter.com/WLKY	http://www.wlky.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Cincinnati	https://www.facebook.com/wlwt5		OH	WLWT-TV	https://twitter.com/WLWT	http://www.wlwt.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Tampa-St. Petersburg	https://www.facebook.com/MORTampa/		FL	WMOR-TV	https://twitter.com/mortampa	http://www.mor-tv.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Portland-Auburn	https://www.facebook.com/wmtwtv		ME	WMTW-TV	https://twitter.com/WMTWTV	http://www.wmtw.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Manchester	https://www.facebook.com/wmur9		NH	WMUR-TV	https://twitter.com/WMUR9	http://www.wmur.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-West Palm Beach	https://www.facebook.com/wpbf25news		FL	WPBF-TV	https://twitter.com/WPBF25News	http://www.wpbf.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Burlington  VT/Plattsburgh	https://www.facebook.com/5WPTZ		NY	WPTZ-TV/WNNE-TV 	https://twitter.com/mynbc5	http://www.wptz.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Pittsburgh	https://www.facebook.com/wtae4		PA	WTAE-TV	https://twitter.com/WTAE	http://www.wtae.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Birmingham	https://www.facebook.com/WVTM13		AL	WVTM-TV	https://twitter.com/WVTM13	http://www.wvtm13.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Greensboro/Winston-Salem	https://www.facebook.com/wxii12news		NC	WXII-TV	https://twitter.com/WXII	http://www.wxii12.com	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Greenville-Spartanburg	https://www.facebook.com/WYFF4		SC	WYFF-TV	https://twitter.com/wyffnews4	http://www.wyff4.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Baltimore	https://www.facebook.com/wbalradio		MD	WBAL-AM	https://twitter.com/wbalradio/	http://www.wbal.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585
-Baltimore	https://www.facebook.com/98online		MD	WIYY-FM	https://twitter.com/98Rock	http://98online.com/homepage	Hearst	hearst.com	2018-08-02 14:55:24.612585
+city	facebook	network	state	station	twitter	website	broadcaster	source	collection_date	name	phone	address	linkedin	instagram
+Des Moines	https://www.facebook.com/kcci8		IA	KCCI-TV	https://twitter.com/KCCINews	http://www.kcci.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Sacramento/Stockton/Modesto	https://www.facebook.com/KCRA3?fref=ts		CA	KCRA-TV	https://twitter.com/kcranews	http://www.kcra.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Kansas City	https://www.facebook.com/KCWE29?fref=ts		MO	KCWE-TV		http://www.kmbc.com/kcwetv	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Omaha	https://www.facebook.com/ketv7?fref=ts		NE	KETV	https://twitter.com/KETV	http://www.ketv.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Fort Smith/Fayettville	https://www.facebook.com/4029news?fref=ts		AR	KHBS-TV/KHOG-TV	https://twitter.com/4029news	http://www.4029tv.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Kansas City	https://www.facebook.com/kmbc9?fref=ts		MO	KMBC-TV	https://twitter.com/kmbc	http://www.kmbc.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Albuquerque	https://www.facebook.com/KOAT7?fref=ts		NM	KOAT-TV	https://twitter.com/koat7news	http://www.koat.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Oklahoma City	https://www.facebook.com/koco5?fref=ts		OK	KOCO-TV	https://twitter.com/koconews	http://www.koco.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Sacramento/Stockton/Modesto			CA	KQCA-TV		http://www.kcra.com/my58	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Monterey-Salinas	https://www.facebook.com/ksbw8?fref=ts		CA	KSBW-TV	https://twitter.com/ksbw	http://www.ksbw.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Jackson	https://www.facebook.com/16wapt?fref=ts		MS	WAPT-TV	https://twitter.com/16WAPTNews	http://www.wapt.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Baltimore	https://www.facebook.com/wbaltv11		MD	WBAL-TV	https://twitter.com/wbaltv11	http://www.wbaltv.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Boston	https://www.facebook.com/wcvb5		MA	WCVB-TV	https://twitter.com/WCVB	http://www.wcvb.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Greensboro/Winston-Salem	https://www.facebook.com/TriadCW/		NC	WCWG-TV		http://www.wxii12.com/cw	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+New Orleans	https://www.facebook.com/wdsutv?fref=ts		LA	WDSU-TV	https://twitter.com/wdsu	http://www.wdsu.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Orlando	https://www.facebook.com/wesh2news		FL	WESH-TV	https://twitter.com/WESH	http://www.wesh.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Lancaster	https://www.facebook.com/wgal8		PA	WGAL-TV	https://twitter.com/WGAL	http://www.wgal.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Milwaukee	https://www.facebook.com/wisn12		WI	WISN-TV	https://twitter.com/WISN12News	http://www.wisn.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Savannah	https://www.facebook.com/WJCLNews		GA	WJCL-TV	https://twitter.com/wjcl_news	http://wjcl.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Orlando	https://www.facebook.com/cw18tv		FL	WKCF-TV		http://www.wesh.com/cw18	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Louisville	https://www.facebook.com/wlkynews		KY	WLKY-TV	https://twitter.com/WLKY	http://www.wlky.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Cincinnati	https://www.facebook.com/wlwt5		OH	WLWT-TV	https://twitter.com/WLWT	http://www.wlwt.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Tampa-St. Petersburg	https://www.facebook.com/MORTampa/		FL	WMOR-TV	https://twitter.com/mortampa	http://www.mor-tv.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Portland-Auburn	https://www.facebook.com/wmtwtv		ME	WMTW-TV	https://twitter.com/WMTWTV	http://www.wmtw.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Manchester	https://www.facebook.com/wmur9		NH	WMUR-TV	https://twitter.com/WMUR9	http://www.wmur.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+West Palm Beach	https://www.facebook.com/wpbf25news		FL	WPBF-TV	https://twitter.com/WPBF25News	http://www.wpbf.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Burlington  VT/Plattsburgh	https://www.facebook.com/5WPTZ		NY	WPTZ-TV/WNNE-TV 	https://twitter.com/mynbc5	http://www.wptz.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Pittsburgh	https://www.facebook.com/wtae4		PA	WTAE-TV	https://twitter.com/WTAE	http://www.wtae.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Birmingham	https://www.facebook.com/WVTM13		AL	WVTM-TV	https://twitter.com/WVTM13	http://www.wvtm13.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Greensboro/Winston-Salem	https://www.facebook.com/wxii12news		NC	WXII-TV	https://twitter.com/WXII	http://www.wxii12.com	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Greenville-Spartanburg	https://www.facebook.com/WYFF4		SC	WYFF-TV	https://twitter.com/wyffnews4	http://www.wyff4.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Baltimore	https://www.facebook.com/wbalradio		MD	WBAL-AM	https://twitter.com/wbalradio/	http://www.wbal.com/	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+Baltimore	https://www.facebook.com/98online		MD	WIYY-FM	https://twitter.com/98Rock	http://98online.com/homepage	Hearst	hearst.com	2018-08-02 14:55:24.612585					
+				Central Coast ABC		https://www.facebook.com/centralcoastabc/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.kcci.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.kcra.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.kmbc.com/kcwetv	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.ketv.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.4029tv.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.kmbc.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.koat.com	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.koco.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.kcra.com/my58	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.ksbw.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		https://www.arcwcrew.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		https://www.wapt.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wbaltv.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		https://www.wcvb.com	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		https://www.wxii12.com/cw	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wdsu.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		https://www.wesh.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wgal.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wisn.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://wjcl.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wesh.com/cw18	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wlky.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wlwt.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.mor-tv.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wmtw.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		https://www.wmtw.com/cw	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wmur.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wpbf.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wptz.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		https://www.mynbc5.com/the-valley-cw	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wtae.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wvtm13.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wxii12.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wyff4.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://www.wbal.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+				Central Coast ABC		http://98online.com/homepage	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Central Coast ABC				
+	https://www.facebook.com/bmtenterprise				https://twitter.com/BmtEnterprise/	http://www.beaumontenterprise.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Beaumont Enterprise	(409) 833-3311	380 Main Street Beaumont, TX 77701	https://www.linkedin.com/company/beaumont-enterprise/	
+	https://www.facebook.com/ctpost				https://twitter.com/connpost/	https://www.ctpost.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Connecticut Post	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	https://www.facebook.com/theEdwi				http://twitter.com/theEdwi/	http://theintelligencer.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Edwardsville Intelligencer	(618) 656-4700	117 North Second Street Edwardsville, IL 62025		
+	https://www.facebook.com/greenwichtime				https://twitter.com/GreenwichTime/	http://www.greenwichtime.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Greenwich Time	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	https://www.facebook.com/chroncom				http://twitter.com/HoustonChron/	https://www.houstonchronicle.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Houston Chronicle	(713) 220-7171	4747 Southwest Freeway Houston, TX 77027	http://www.linkedin.com/company/houston-chronicle	https://www.instagram.com/houstonchron/
+	https://www.facebook.com/pages/Huron-Daily-Tribune/335130887699				https://twitter.com/michigans_thumb	http://www.michigansthumb.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Huron Daily Tribune	(989) 269-6461	211 North Heisterman Street Bad Axe, MI 48413		
+	https://www.facebook.com/journalcourier				https://twitter.com/journalcourier	http://www.myjournalcourier.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	The Journal-Courier	(217) 245-6121	235 W. State Street Jacksonville, IL 62650		
+	https://www.facebook.com/lmtonline				http://twitter.com/lmtnews/	http://www.lmtonline.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Laredo Morning Times	(956) 728-2500	111 Esperanza Drive Laredo, TX 78041		https://www.instagram.com/lmtnews/
+	https://www.facebook.com/manisteenews				https://twitter.com/manisteenews	http://manisteenews.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Manistee News Advocate	(231) 723-3592	75 Maple Street Manistee, MI 49660		
+	https://www.facebook.com/middletownpress				https://twitter.com/Middletownpress	http://middletownpress.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	The Middletown Press	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	https://www.facebook.com/midlanddailynews				https://twitter.com/MDN	http://www.ourmidland.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Midland Daily News	(989) 835-7171	219 East Main Street Midland, MI 48640		
+	http://facebook.com/TheReporterTelegram/				http://twitter.com/mwtnews/	http://www.mrt.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Midland Reporter Telegram	(432) 682-5311	201 E. Illinois Midland, TX 79701		https://www.instagram.com/midlandreportertelegram/
+	https://www.facebook.com/NewHavenRegister/				https://twitter.com/nhregister	http://www.nhregister.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	New Haven Register	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	https://www.facebook.com/newstimes				http://twitter.com/NewsTimes/	http://www.newstimes.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	The News-Times	(203) 744-5100	345 Main Street Danbury, CT 06810		
+	https://www.facebook.com/TheHourHearst/				https://twitter.com/TheHourNews	http://www.thehour.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	The Hour	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06855		https://www.instagram.com/hoursports/
+	https://www.facebook.com/bigrapidspioneer				https://twitter.com/bigrapidsnews	http://news.pioneergroup.com/bigrapidsnews/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	The Pioneer	(231) 796-4831	115 N. Michigan Avenue Big Rapids, MI 49307		
+	https://www.facebook.com/plainviewdailyherald				http://twitter.com/MyPlainview/	http://www.myplainview.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Plainview Herald	(806) 296-1300	820 Broadway Plainview, TX 79072		
+	http://facebook.com/RegisterCitizen				http://twitter.com/RegisterCitizen	http://registercitizen.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	The Register Citizen	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	http://facebook.com/SanAntonioExpressNews/				http://twitter.com/mySA/	https://www.expressnews.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	San Antonio Express-News	(210) 250-3000	420 Broadway, Suite 200 San Antonio, TX 78205	http://www.linkedin.com/company/san-antonio-express-news	https://www.instagram.com/mysanantonio/
+	https://www.facebook.com/SFChronicle/				https://twitter.com/SFChronicle/	https://www.sfchronicle.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	San Francisco Chronicle	(415) 777-1111	901 Mission Street San Francisco, CA 94103	https://www.linkedin.com/company/sfchronicle	https://www.instagram.com/SFChronicle/
+	https://www.facebook.com/seattlepionline				https://twitter.com/seattlepi/	http://www.seattlepi.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Seattlepi.com	(206) 448-8000	701 5th Avenue 48th Floor Seattle, WA 98104		https://www.instagram.com/seattlepi/
+	https://www.facebook.com/SFGate/				https://twitter.com/SFGate/	https://www.sfgate.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	SFGATE	San Francisco, California 94103	901 Mission Street	https://www.linkedin.com/company/sfgate	https://www.instagram.com/SFGate/
+	https://www.facebook.com/stamfordadvocate				https://twitter.com/StamAdvocate/	https://www.stamfordadvocate.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	The Advocate	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		https://www.instagram.com/stamfordadvocate/
+	http://facebook.com/telegraphnews				http://twitter.com/altontelegraph	http://thetelegraph.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	The Telegraph	(618) 463-2500	219 Piasa Street Alton, IL 62002		
+	https://www.facebook.com/timesunion/				https://twitter.com/timesunion/	https://www.timesunion.com/	Hearst	https://www.hearst.com/	2023-05-17 11:29:07.747954	Albany Times Union	(518) 454-5694	P.O. Box 15000 News Plaza Albany, NY 12212	https://www.linkedin.com/company/times-union	https://www.instagram.com/timesunion/
+	https://www.facebook.com/bmtenterprise				https://twitter.com/BmtEnterprise/	http://www.beaumontenterprise.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Beaumont Enterprise	(409) 833-3311	380 Main Street Beaumont, TX 77701	https://www.linkedin.com/company/beaumont-enterprise/	
+	https://www.facebook.com/ctpost				https://twitter.com/connpost/	https://www.ctpost.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Connecticut Post	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	https://www.facebook.com/theEdwi				http://twitter.com/theEdwi/	http://theintelligencer.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Edwardsville Intelligencer	(618) 656-4700	117 North Second Street Edwardsville, IL 62025		
+	https://www.facebook.com/greenwichtime				https://twitter.com/GreenwichTime/	http://www.greenwichtime.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Greenwich Time	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	https://www.facebook.com/chroncom				http://twitter.com/HoustonChron/	https://www.houstonchronicle.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Houston Chronicle	(713) 220-7171	4747 Southwest Freeway Houston, TX 77027	http://www.linkedin.com/company/houston-chronicle	https://www.instagram.com/houstonchron/
+	https://www.facebook.com/pages/Huron-Daily-Tribune/335130887699				https://twitter.com/michigans_thumb	http://www.michigansthumb.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Huron Daily Tribune	(989) 269-6461	211 North Heisterman Street Bad Axe, MI 48413		
+	https://www.facebook.com/journalcourier				https://twitter.com/journalcourier	http://www.myjournalcourier.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	The Journal-Courier	(217) 245-6121	235 W. State Street Jacksonville, IL 62650		
+	https://www.facebook.com/lmtonline				http://twitter.com/lmtnews/	http://www.lmtonline.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Laredo Morning Times	(956) 728-2500	111 Esperanza Drive Laredo, TX 78041		https://www.instagram.com/lmtnews/
+	https://www.facebook.com/manisteenews				https://twitter.com/manisteenews	http://manisteenews.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Manistee News Advocate	(231) 723-3592	75 Maple Street Manistee, MI 49660		
+	https://www.facebook.com/middletownpress				https://twitter.com/Middletownpress	http://middletownpress.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	The Middletown Press	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	https://www.facebook.com/midlanddailynews				https://twitter.com/MDN	http://www.ourmidland.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Midland Daily News	(989) 835-7171	219 East Main Street Midland, MI 48640		
+	http://facebook.com/TheReporterTelegram/				http://twitter.com/mwtnews/	http://www.mrt.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Midland Reporter Telegram	(432) 682-5311	201 E. Illinois Midland, TX 79701		https://www.instagram.com/midlandreportertelegram/
+	https://www.facebook.com/NewHavenRegister/				https://twitter.com/nhregister	http://www.nhregister.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	New Haven Register	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	https://www.facebook.com/newstimes				http://twitter.com/NewsTimes/	http://www.newstimes.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	The News-Times	(203) 744-5100	345 Main Street Danbury, CT 06810		
+	https://www.facebook.com/TheHourHearst/				https://twitter.com/TheHourNews	http://www.thehour.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	The Hour	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06855		https://www.instagram.com/hoursports/
+	https://www.facebook.com/bigrapidspioneer				https://twitter.com/bigrapidsnews	http://news.pioneergroup.com/bigrapidsnews/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	The Pioneer	(231) 796-4831	115 N. Michigan Avenue Big Rapids, MI 49307		
+	https://www.facebook.com/plainviewdailyherald				http://twitter.com/MyPlainview/	http://www.myplainview.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Plainview Herald	(806) 296-1300	820 Broadway Plainview, TX 79072		
+	http://facebook.com/RegisterCitizen				http://twitter.com/RegisterCitizen	http://registercitizen.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	The Register Citizen	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		
+	http://facebook.com/SanAntonioExpressNews/				http://twitter.com/mySA/	https://www.expressnews.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	San Antonio Express-News	(210) 250-3000	420 Broadway, Suite 200 San Antonio, TX 78205	http://www.linkedin.com/company/san-antonio-express-news	https://www.instagram.com/mysanantonio/
+	https://www.facebook.com/SFChronicle/				https://twitter.com/SFChronicle/	https://www.sfchronicle.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	San Francisco Chronicle	(415) 777-1111	901 Mission Street San Francisco, CA 94103	https://www.linkedin.com/company/sfchronicle	https://www.instagram.com/SFChronicle/
+	https://www.facebook.com/seattlepionline				https://twitter.com/seattlepi/	http://www.seattlepi.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Seattlepi.com	(206) 448-8000	701 5th Avenue 48th Floor Seattle, WA 98104		https://www.instagram.com/seattlepi/
+	https://www.facebook.com/SFGate/				https://twitter.com/SFGate/	https://www.sfgate.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	SFGATE	San Francisco, California 94103	901 Mission Street	https://www.linkedin.com/company/sfgate	https://www.instagram.com/SFGate/
+	https://www.facebook.com/stamfordadvocate				https://twitter.com/StamAdvocate/	https://www.stamfordadvocate.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	The Advocate	(203) 842-2500	301 Merritt 7, Suite 1 Norwalk, CT 06851		https://www.instagram.com/stamfordadvocate/
+	http://facebook.com/telegraphnews				http://twitter.com/altontelegraph	http://thetelegraph.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	The Telegraph	(618) 463-2500	219 Piasa Street Alton, IL 62002		
+	https://www.facebook.com/timesunion/				https://twitter.com/timesunion/	https://www.timesunion.com/	Hearst	https://www.hearst.com/	2023-05-17 11:51:16.812722	Albany Times Union	(518) 454-5694	P.O. Box 15000 News Plaza Albany, NY 12212	https://www.linkedin.com/company/times-union	https://www.instagram.com/timesunion/

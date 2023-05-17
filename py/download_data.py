@@ -21,7 +21,7 @@ This is a forked version of the original script.
 The original script was written by Leon Yin and can be found at NYU's CSMaP.
 
 Updated By Will Dinneen
-On 2023-05-16
+On 2023-05-17
 
 ---
 This script contains scrapers for tribune, sinclair, nexstar, hearst, stationindex, and usnpl.
@@ -36,69 +36,69 @@ Updated 2018-08-02
 '''
 
 
-def download_tribune():
-    '''Scrapes ther Tribune homepage.'''
-    def parse_channel_html(channel_html, website=None):
-        '''Parses bs4 html to create a dictionary (row in the dataset)'''
-        if website == None:
-            website = channel_html.find('a').get('href')
-        station = channel_html.find('div', class_='q_team_title_holder').find("h3").text
-        city = channel_html.find('div', class_='q_team_title_holder').find('span').text
-        social = channel_html.find('div', class_='q_team_social_holder')
-        network = None
+# def download_tribune():
+#     '''Scrapes ther Tribune homepage.'''
+#     def parse_channel_html(channel_html, website=None):
+#         '''Parses bs4 html to create a dictionary (row in the dataset)'''
+#         if website == None:
+#             website = channel_html.find('a').get('href')
+#         station = channel_html.find('div', class_='q_team_title_holder').find("h3").text
+#         city = channel_html.find('div', class_='q_team_title_holder').find('span').text
+#         social = channel_html.find('div', class_='q_team_social_holder')
+#         network = None
         
-        row = dict(
-            network = network,
-            city = city,
-            website = website,
-            station = station,
-        )
+#         row = dict(
+#             network = network,
+#             city = city,
+#             website = website,
+#             station = station,
+#         )
 
-        if social:
-            for s in social.find_all('span', class_='q_social_icon_holder normal_social'):
-                link = s.find('a').get('href')
-                if 'facebook' in link:
-                    row['facebook'] = link
-                elif 'twitter' in link:
-                    row['twitter'] = link
-                elif 'youtube' in link:
-                    row['youtube'] = link
-        return row
+#         if social:
+#             for s in social.find_all('span', class_='q_social_icon_holder normal_social'):
+#                 link = s.find('a').get('href')
+#                 if 'facebook' in link:
+#                     row['facebook'] = link
+#                 elif 'twitter' in link:
+#                     row['twitter'] = link
+#                 elif 'youtube' in link:
+#                     row['youtube'] = link
+#         return row
     
-    print("Downloading Tribune")
-    url = 'http://www.tribunemedia.com/our-brands/'
-    r = requests.get(url, headers=headers)
-    soup = BeautifulSoup(r.content, 'lxml')
-    tables = soup.find_all('div', class_='vc_row wpb_row section vc_row-fluid ')
-    channels = soup.find_all('div', class_='wpb_wrapper')
+#     print("Downloading Tribune")
+#     url = 'http://www.tribunemedia.com/our-brands/'
+#     r = requests.get(url, headers=generate_request_header())
+#     soup = BeautifulSoup(r.content, 'lxml')
+#     tables = soup.find_all('div', class_='vc_row wpb_row section vc_row-fluid ')
+#     channels = soup.find_all('div', class_='wpb_wrapper')
 
-    metadata = []
-    for i, channel in tqdm(enumerate(channels)):
-        try:
-            channel_meta = parse_channel_html(channel)
-            metadata.append(channel_meta)
-        except:
-            try:
-                website = channels[i-8].find('a').get('href')
-                channel_meta = parse_channel_html(channel, website)
-                metadata.append(channel_meta)
-            except:
-                print(i)
+#     metadata = []
+#     for i, channel in tqdm(enumerate(channels)):
+#         try:
+#             channel_meta = parse_channel_html(channel)
+#             metadata.append(channel_meta)
+#         except:
+#             try:
+#                 website = channels[i-8].find('a').get('href')
+#                 channel_meta = parse_channel_html(channel, website)
+#                 metadata.append(channel_meta)
+#             except:
+#                 print(i)
 
-    df = pd.DataFrame(metadata)
-    df['broadcaster'] = 'Tribune'
-    df['source'] = 'tribunemedia.com'
-    df['state'] = df['city'].replace(city_state)
-    df['collection_date'] = today
-    update = 1
+#     df = pd.DataFrame(metadata)
+#     df['broadcaster'] = 'Tribune'
+#     df['source'] = 'tribunemedia.com'
+#     df['state'] = df['city'].replace(city_state)
+#     df['collection_date'] = today
+#     update = 1
     
-    if os.path.exists(tribune_file):
-        # appending to old
-        df_ = pd.read_csv(tribune_file, sep='\t')
-        df = df[~df['station'].isin(df_['station'])]
-        df = df_.append(df)
+#     if os.path.exists(tribune_file):
+#         # appending to old
+#         df_ = pd.read_csv(tribune_file, sep='\t')
+#         df = df[~df['station'].isin(df_['station'])]
+#         df = df_.append(df)
    
-    df.to_csv(tribune_file, index=False, sep='\t')
+#     df.to_csv(tribune_file, index=False, sep='\t')
 
 
 def download_sinclair():
@@ -205,7 +205,7 @@ def download_nexstar():
     
     print("Downloading Nexstar")
     url = 'https://www.nexstar.tv/stations/'
-    r = requests.get(url, headers=headers)
+    r = requests.get(url, headers=generate_request_header())
     soup = BeautifulSoup(r.content, 'lxml')
     table = soup.find('table', class_='tablepress tablepress-id-1 dataTable no-footer tablepress--responsive')
     df = pd.read_html(str(table))[0]
@@ -305,7 +305,7 @@ def extract_gray():
     
 #     print("Downloading Meredith")
 #     url = 'http://www.meredith.com/local-media/broadcast-and-digital'
-#     r = requests.get(url, headers=headers)
+#     r = requests.get(url, headers=generate_request_header())
 #     soup = BeautifulSoup(r.content, 'lxml')
 #     channels = soup.find_all('li', class_=re.compile('^dot station-id-*'))
 #     metadata = []
@@ -379,7 +379,7 @@ def download_hearst():
         '''Parses bs4 html to create a dictionary (row in the dataset)'''
         
         href = newspaper_html.find('a').get('href')
-        sub_r = requests.get(f'https://www.hearst.com{href}', headers=headers)
+        sub_r = requests.get(f'https://www.hearst.com{href}', headers=generate_request_header())
         sub_soup = BeautifulSoup(sub_r.content, 'lxml')
         
         # Extract newspaper information
@@ -437,7 +437,7 @@ def download_hearst():
     newspaper_url = "https://www.hearst.com/newspapers"
     
     # Get broadcasting data
-    r = requests.get(broadcasting_url, headers=headers)
+    r = requests.get(broadcasting_url, headers=generate_request_header())
     soup = BeautifulSoup(r.content, 'lxml')
     parent_div = soup.find('div', class_='brand-card')
     channels = parent_div.find_all('div', recursive=False)
@@ -448,7 +448,7 @@ def download_hearst():
             channel_metadata.append(channel_meta)
     
     # get newspaper data
-    r = requests.get(newspaper_url, headers=headers)
+    r = requests.get(newspaper_url, headers=generate_request_header())
     soup = BeautifulSoup(r.content, 'lxml')
     parent_div = soup.find('div', class_='brand-card')
     newspapers = parent_div.find_all('div', recursive=False)
@@ -509,7 +509,7 @@ def download_stationindex():
 
     market_urls = []
     for url in tv_markets:
-        r = requests.get(url, headers=headers)
+        r = requests.get(url, headers=generate_request_header())
         soup = BeautifulSoup(r.content, 'lxml')
         table = soup.find('table', attrs={'class' : 'table table-striped table-condensed'})
         urls = ['http://www.stationindex.com' + _.get('href') for _ in table.find_all('a')]
@@ -517,7 +517,7 @@ def download_stationindex():
 
     data = []
     for url in tqdm(market_urls):
-        r = requests.get(url, headers=headers)
+        r = requests.get(url, headers=generate_request_header())
         soup = BeautifulSoup(r.content, 'lxml')
         rows = soup.find_all('tr')
         data.extend([parse_station(row) for row in rows])     
@@ -551,70 +551,82 @@ def download_usnpl():
     Returns:
         None
     '''
+    print("Downloading Usnpl")
 
     sites = []
     
 #    for state in states:
     for state in states:
-        url = f'https://www.usnpl.com/search/state?state={state}'
-        r = requests.get(url, headers=headers)
-        soup = BeautifulSoup(r.content, 'lxml')
-        
-        main_table = soup.find('table', class_='table table-sm')
-        
-        if main_table:
-            rows = main_table.find_all('tr')
-            # Remove non-data rows
-            rows = [row for row in rows if 'table-dark' not in row.get('class', [])]
-            current_city = ""
-            for row in rows:
-                city_element = row.find('h4', class_='result_city')
-                if city_element:
-                    current_city = city_element.text.strip()
-                    continue
-                # Extract data From the row
-                data_points = row.find_all('td')
-                if len(data_points) >= 6:
-                    newspaper_name = data_points[0].find('a').text.strip() if data_points[0].find('a') else ''
-                    usnpl_page = data_points[0].find('a')['href'] if data_points[0].find('a') else ''
-                    website = data_points[1].find('a')['href'] if data_points[1].find('a') else ''
-                    twitter = data_points[2].find('a')['href'] if data_points[2].find('a') else ''
-                    facebook = data_points[3].find('a')['href'] if data_points[3].find('a') else ''
-                    instagram = data_points[4].find('a')['href'] if data_points[4].find('a') else ''
-                    youtube = data_points[5].find('a')['href'] if data_points[5].find('a') else ''
-                else:
-                    continue
+        print(state)
+        try:
+            url = f'https://www.usnpl.com/search/state?state={state}'
+            r = requests.get(url, headers=generate_request_header())
+            soup = BeautifulSoup(r.content, 'lxml')
 
-                # Extract Data From the Newspaper Page
-                sub_url = f"https://www.usnpl.com/search/{usnpl_page}"
-                r = requests.get(sub_url, headers=headers)
-                sub_soup = BeautifulSoup(r.content, 'lxml')
-                sub_table = sub_soup.find_all('tr')
-                address_element = sub_table[1]
-                address_parts = [part.strip() for part in address_element.stripped_strings]
-                address = ' '.join(address_parts)
-                editor = sub_soup.find('strong', text='Editor:').find_next_sibling(text=True).strip()
-                phone = sub_soup.find('strong', text='Phone:').find_next_sibling(text=True).strip()
+            main_table = soup.find('table', class_='table table-sm')
 
-                # Parsed Object
-                parsed_object = {
-                    "State": state,
-                    "City": current_city,
-                    "Name": newspaper_name,
-                    "Website": website,
-                    "Twitter": twitter,
-                    "Facebook": facebook,
-                    "Instagram": instagram,
-                    "Youtube": youtube,
-                    "Address": address,
-                    "Editor": editor,
-                    "Phone": phone
-                }
-                
-                # Add to the list
-                sites.append(parsed_object)
+            if main_table:
+                rows = main_table.find_all('tr')
+                # Remove non-data rows
+                rows = [row for row in rows if 'table-dark' not in row.get('class', [])]
+                current_city = ""
+                for row in rows:
+                    try:
+                        city_element = row.find('h4', class_='result_city')
+                        if city_element:
+                            current_city = city_element.text.strip()
+                            continue
+                        # Extract data From the row
+                        data_points = row.find_all('td')
+                        if len(data_points) >= 6:
+                            newspaper_name = data_points[0].find('a').text.strip() if data_points[0].find('a') else ''
+                            usnpl_page = data_points[0].find('a')['href'] if data_points[0].find('a') else ''
+                            website = data_points[1].find('a')['href'] if data_points[1].find('a') else ''
+                            twitter = data_points[2].find('a')['href'] if data_points[2].find('a') else ''
+                            facebook = data_points[3].find('a')['href'] if data_points[3].find('a') else ''
+                            instagram = data_points[4].find('a')['href'] if data_points[4].find('a') else ''
+                            youtube = data_points[5].find('a')['href'] if data_points[5].find('a') else ''
+                        else:
+                            continue
+
+                        # Extract Data From the Newspaper Page
+                        sub_url = f"https://www.usnpl.com/search/{usnpl_page}"
+                        r = requests.get(sub_url, headers=generate_request_header())
+                        sub_soup = BeautifulSoup(r.content, 'lxml')
+                        sub_table = sub_soup.find_all('tr')
+                        address_element = sub_table[1]
+                        address_parts = [part.strip() for part in address_element.stripped_strings]
+                        address = ' '.join(address_parts)
+                        editor_element = sub_soup.find('strong', string='Editor:')
+                        editor = editor_element.find_next_sibling(string=True).strip() if editor_element else ''
+                        phone_element = sub_soup.find('strong', string='Phone:')
+                        phone = phone_element.find_next_sibling(string=True).strip() if phone_element else ''
+
+                        # Parsed Object
+                        parsed_object = {
+                            "State": state,
+                            "City": current_city,
+                            "Name": newspaper_name,
+                            "Website": website,
+                            "Twitter": twitter,
+                            "Facebook": facebook,
+                            "Instagram": instagram,
+                            "Youtube": youtube,
+                            "Address": address,
+                            "Editor": editor,
+                            "Phone": phone
+                        }
+                    except Exception as e:
+                        print(f"An error occurred in processing a value in city '{current_city}': {e}")
+                        # Add to the list
+                        sites.append(parsed_object)
+        except Exception as e:
+            print(f"An error occurred in processing (usnpl) the state '{state}': {e}")
 
     df = pd.DataFrame(sites)
+
+    print(df)
+
     df['Website'] = df['Website'].str.rstrip('/')
     df['source'] = 'usnpl.com'
     df['collection_date'] = today
@@ -626,8 +638,6 @@ def download_usnpl():
         df = df_.append(df) 
     
     df.to_csv(usnpl_file, index=False, sep='\t')
-
-    print(df)
     
     
 def download_all_datasets():
@@ -638,7 +648,7 @@ def download_all_datasets():
     # download_meredith()
     download_nexstar()
     download_sinclair()
-    download_tribune()
+    # download_tribune()
     download_stationindex()
     download_usnpl()
     

@@ -10,8 +10,8 @@
       - To replace Meredith, I added [Gray TV's list of companies](https://gray.tv/companies)
     - Sinclair rewrite
       - The new website updates the information after loading which makes a headless browser necessary
-
-
+    - Tribune Removal
+      - Tribune Media merged with Nextstar, and thus it has been removed
 
 
 # Local News Dataset 2018
