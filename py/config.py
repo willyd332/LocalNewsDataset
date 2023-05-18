@@ -86,7 +86,7 @@ look_up = {' Honolulu' : 'HI',
 
 col_standard = {
     'station' : 'name',
-    'twitter_name' : 'twitter',
+    'twitter_Name' : 'twitter',
     'geography' : 'state',
     'broadcaster' : 'owner'
 }
@@ -99,8 +99,8 @@ cols_standard_nexstar = {
 
 cols_nexstar = ['station', 'website', 'city', 'state', 'broadcaster', 'source']
 
-cols = ['name', 'state', 'website', 'twitter', 'youtube', 'facebook', 'owner', 'medium', 'source', 'collection_date']
-cols_final = ['name', 'state', 'website', 'domain', 'twitter', 'youtube', 'facebook', 'owner', 'medium', 'source', 'collection_date']
+cols = ['state', 'medium', 'city', 'name', 'website', 'twitter', 'facebook', 'instagram', 'youtube', 'address', 'editor', 'phone', 'source', 'collection_date', 'owner']
+cols_final = cols_final = ['name', 'state', 'city', 'medium', 'website', 'twitter', 'facebook', 'instagram', 'youtube', 'owner', 'phone', 'source', 'collection_date']
 
 # to align nexstar websites to station names
 nexstar_alignment = {

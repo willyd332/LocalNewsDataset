@@ -1,17 +1,16 @@
 # List of Updates 2023
-  - Broken News Links:
-    - USNPL rewrite
-    - HEARST rewrite
-      - Scraping newspapers and broadcasting stations
-      - Only the website and station name were available for broadcasting. No social media links, no state/city information.
-    - Meredith removal
-      - In 2021 Dotdash acquired Meredith and now the list of local-news is no longer available
-    - Addition of Gray TV
-      - To replace Meredith, I added [Gray TV's list of companies](https://gray.tv/companies)
-    - Sinclair rewrite
-      - The new website updates the information after loading which makes a headless browser necessary
-    - Tribune Removal
-      - Tribune Media merged with Nextstar, and thus it has been removed
+
+Updated by Will Dinneen on May 18, 2023
+
+1. USNPL Website had been updated so I rewrote the scraping function.
+2. HEARST Website had been updated so I rewrote the scraping function. Only website and station name were available.
+3. SINCLAIR Website had been updated so I rewrote the scraping function. Had to use selenium headless browser to capture updating data.
+3. In 2021 Dotdash acquired Meredith and now the list of local-news is no longer available. Meredith is thus not included in the 2023 Dataset.
+4. Tribune Media completed a merger with Nextstar, and thus Tribune has been removed from the 2023 dataset.
+5. To replace this missing data, I added [Gray TV's list of companies](https://gray.tv/companies).
+
+*All of this newly updated scraped data is represented in the `data_2023` folder. Additionally, `config.py`, `download_data.py`, and*
+*`merge.py` have been updated to reflect the 2023 changes. If you would like to run the original code, refer to the original repo.*
 
 
 # Local News Dataset 2018

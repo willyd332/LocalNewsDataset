@@ -8,6 +8,12 @@ import urlexpander
 from config import *
 
 '''
+Updated Version
+
+Will Dinneen
+2023-05-18
+---
+
 After downloading metadata bout state-level media outlets, this script can be run
 to merge rows and standardize the columns.
 
@@ -50,21 +56,24 @@ def merge_stations():
     To be run after `download_data.py`, opens the newly downloaded TV station data, and returns a merged dataframe.
     '''
     # load the files
+    df_gray = pd.read_csv(gray_file, sep='\t')
     df_stationindex = pd.read_csv(stationindex_file, sep='\t')
-    df_meridith = pd.read_csv(meredith_file, sep='\t')
+    # df_meridith = pd.read_csv(meredith_file, sep='\t')
     df_nexstar = pd.read_csv(nexstar_file, sep='\t')
     df_sinclair = pd.read_csv(sinclair_file, sep='\t')
     df_hearst = pd.read_csv(hearst_file, sep='\t')
-    df_tribune = pd.read_csv(tribune_file, sep='\t')
+    # df_tribune = pd.read_csv(tribune_file, sep='\t')
     
     # fix-up col names and owner names
     df_stationindex.columns = [station_index_mapping.get(c, c) for c in df_stationindex.columns]
     df_stationindex.broadcaster = df_stationindex.broadcaster.replace(owner_mapping)
     
+    df_gray = df_gray.rename(columns={'title': 'station'})
+    df_hearst = df_hearst.drop('name', axis=1)
+
     # merge the files
-    df_super = (df_stationindex.append(df_meridith)
+    df_super = (df_stationindex.append(df_gray)
                     .append(df_nexstar)
-                    .append(df_tribune)
                     .append(df_hearst)
                     .append(df_sinclair))
     
@@ -97,8 +106,11 @@ def merge_tv_and_media():
     df_custom = load_custom_stations(custom_station_file)
     
     # add new columns
+    df_tv['youtube'] = None
+    df_tv['editor'] = None
     df_usnpl['source'] = 'usnpl.com'
     df_custom['source'] = 'User Input'
+    df_custom[['city', 'instagram', 'address', 'editor', 'phone']] = None
     df_usnpl['owner'] = None # this can be a future function that looks up known owners.
     
     # normalize column names
@@ -106,10 +118,16 @@ def merge_tv_and_media():
     df_usnpl.columns = [col_standard.get(c, c) for c in df_usnpl.columns]
     df_tv.columns = [col_standard.get(c, c) for c in df_tv.columns]
     df_custom.columns = [col_standard.get(c, c) for c in df_custom.columns]
+
+    df_usnpl = df_usnpl.rename(columns={'twitter_name': 'twitter'})
     
+    print(df_tv.columns)
+
     # append the dataframes
     df_state = df_tv[cols].append(df_usnpl[cols])
     df_state = df_state[cols].append(df_custom[cols])
+
+    print(df_state)
     
     # create a domain column
     df_state['domain'] = df_state['website'].apply(get_domain)
