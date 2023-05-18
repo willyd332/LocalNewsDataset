@@ -10,6 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import json
+import time
 from tqdm import tqdm as tqdm
 from bs4 import BeautifulSoup
 
@@ -138,9 +139,17 @@ def download_sinclair():
     table = main.find('div', class_='table-wrapper')
     df = pd.read_html(str(table))[0]
     df.drop(["Status", "DMA Rank"], axis=1, inplace=True)
-    df.rename(columns={"Stations": "station", "Market": "location"}, inplace=True)
+    df.rename(columns={"Stations": "station", 
+                       "Market": "location",
+                       "Links":"website", 
+                       "location":"geo"}, inplace=True)
+    
+    df['location'] = df['location'].fillna('')
+    split_values = df['location'].str.split(', ', n=1, expand=True)
+    df['city'] = split_values[0]
+    df['state'] = split_values[1].fillna('')
     df['broadcaster'] = 'Sinclair'
-    df['source'] = 'https://sbgi.net/'
+    df['source'] = 'sbgi.net'
     df['collection_date'] = today
     
     if os.path.exists(sinclair_file):
@@ -355,11 +364,15 @@ def download_hearst():
             return None
         
         # Extract station name from alt-text
-        img_container = soup.find('div', class_='brand-logo-caption-with-text')
+        img_container = channel_html.find('div', class_='brand-logo-caption-with-text')
         image_element = img_container.find('img')
-        station = alt_text = image_element['alt']
+        station = image_element['alt']
 
         context = dict(
+            city = "",
+            state = "",
+            network = "",
+            medium = "broadcasting",
             website = website,
             station = station,
             name = station,
@@ -394,6 +407,14 @@ def download_hearst():
         
         address_info = column_divs[2].find('div', class_='address-container')
         address_list = [p.text.strip() for p in address_info.find_all('p')]
+        city = ""
+        state = ""
+        city_state = address_list[1].split(', ')
+        if len(city_state) >= 2:
+            city = city_state[0]  # Extract the city
+            state_zip = city_state[1].split(' ')
+            if len(city_state) >= 2:
+                state = state_zip[0]  # Extract the state
         phone = address_list[-1]
         address = ' '.join(address_list[:-1])
             
@@ -417,8 +438,12 @@ def download_hearst():
         column_divs[2]
 
         context = dict(
+            city = city,
+            state = state,
+            network = "",
             website = website,
             name = name,
+            medium = "newspaper",
             address = address,
             phone = phone,
             twitter = twitter,
@@ -463,7 +488,7 @@ def download_hearst():
     df = pd.concat([broadcast_df, newspaper_df])
     
     df['broadcaster'] = 'Hearst'
-    df['source'] = 'https://www.hearst.com/'
+    df['source'] = 'hearst.com'
     df['collection_date'] = today
     
     if os.path.exists(hearst_file):
@@ -561,65 +586,83 @@ def download_usnpl():
         try:
             url = f'https://www.usnpl.com/search/state?state={state}'
             r = requests.get(url, headers=generate_request_header())
+            # Avoid Rate Limit Issues
+            time.sleep(10)
             soup = BeautifulSoup(r.content, 'lxml')
 
             main_table = soup.find('table', class_='table table-sm')
 
             if main_table:
                 rows = main_table.find_all('tr')
-                # Remove non-data rows
+                # Remove non-data rowss
                 rows = [row for row in rows if 'table-dark' not in row.get('class', [])]
                 current_city = ""
                 for row in rows:
-                    try:
-                        city_element = row.find('h4', class_='result_city')
-                        if city_element:
-                            current_city = city_element.text.strip()
-                            continue
-                        # Extract data From the row
-                        data_points = row.find_all('td')
-                        if len(data_points) >= 6:
-                            newspaper_name = data_points[0].find('a').text.strip() if data_points[0].find('a') else ''
-                            usnpl_page = data_points[0].find('a')['href'] if data_points[0].find('a') else ''
-                            website = data_points[1].find('a')['href'] if data_points[1].find('a') else ''
-                            twitter = data_points[2].find('a')['href'] if data_points[2].find('a') else ''
-                            facebook = data_points[3].find('a')['href'] if data_points[3].find('a') else ''
-                            instagram = data_points[4].find('a')['href'] if data_points[4].find('a') else ''
-                            youtube = data_points[5].find('a')['href'] if data_points[5].find('a') else ''
-                        else:
-                            continue
+                    city_element = row.find('h4', class_='result_city')
+                    if city_element:
+                        current_city = city_element.text.strip()
+                        continue
+                    # Extract data From the row
+                    data_points = row.find_all('td')
+                    if len(data_points) >= 6:
+                        newspaper_name = data_points[0].find('a').text.strip() if data_points[0].find('a') else ''
+                        usnpl_page = data_points[0].find('a')['href'] if data_points[0].find('a') else ''
+                        website = data_points[1].find('a')['href'] if data_points[1].find('a') else ''
+                        twitter = data_points[2].find('a')['href'] if data_points[2].find('a') else ''
+                        facebook = data_points[3].find('a')['href'] if data_points[3].find('a') else ''
+                        instagram = data_points[4].find('a')['href'] if data_points[4].find('a') else ''
+                        youtube = data_points[5].find('a')['href'] if data_points[5].find('a') else ''
+                    else:
+                        continue
+                    
+                    phone = ""
+                    editor = ""
+                    address = ""
 
-                        # Extract Data From the Newspaper Page
-                        sub_url = f"https://www.usnpl.com/search/{usnpl_page}"
-                        r = requests.get(sub_url, headers=generate_request_header())
-                        sub_soup = BeautifulSoup(r.content, 'lxml')
-                        sub_table = sub_soup.find_all('tr')
-                        address_element = sub_table[1]
-                        address_parts = [part.strip() for part in address_element.stripped_strings]
-                        address = ' '.join(address_parts)
-                        editor_element = sub_soup.find('strong', string='Editor:')
-                        editor = editor_element.find_next_sibling(string=True).strip() if editor_element else ''
-                        phone_element = sub_soup.find('strong', string='Phone:')
-                        phone = phone_element.find_next_sibling(string=True).strip() if phone_element else ''
+                    for attempt in range(3):
+                        try:
+                            # Extract Data From the Newspaper Page
+                            sub_url = f"https://www.usnpl.com/search/{usnpl_page}"
+                            r = requests.get(sub_url, headers=generate_request_header())
+                            if r.status_code != 200:
+                                raise ValueError(f"Unexpected status code {r.status_code}")
+                            # Avoid Rate Limit Issues
+                            time.sleep(1)
+                            sub_soup = BeautifulSoup(r.content, 'lxml')
 
-                        # Parsed Object
-                        parsed_object = {
-                            "State": state,
-                            "City": current_city,
-                            "Name": newspaper_name,
-                            "Website": website,
-                            "Twitter": twitter,
-                            "Facebook": facebook,
-                            "Instagram": instagram,
-                            "Youtube": youtube,
-                            "Address": address,
-                            "Editor": editor,
-                            "Phone": phone
-                        }
-                    except Exception as e:
-                        print(f"An error occurred in processing a value in city '{current_city}': {e}")
-                        # Add to the list
-                        sites.append(parsed_object)
+                            sub_table = sub_soup.find_all('tr')
+                            if len(sub_table) >= 2:
+                                address_element = sub_table[1]
+                                address_parts = [part.strip() for part in address_element.stripped_strings]
+                                address = ' '.join(address_parts)
+                            else: 
+                                print(sub_soup.find('title').text.strip() + f" -- {current_city}")
+                                continue
+                            editor_element = sub_soup.find('strong', string='Editor:')
+                            editor = editor_element.find_next_sibling(string=True).strip() if editor_element else ''
+                            phone_element = sub_soup.find('strong', string='Phone:')
+                            phone = phone_element.find_next_sibling(string=True).strip() if phone_element else ''
+                            break
+                        except Exception as e:
+                            print(f"An error occurred in processing a value in city '{current_city}': {e}")
+
+                    # Parsed Object
+                    parsed_object = {
+                        "Geography": state,
+                        "Medium": "Newspaper",
+                        "City": current_city,
+                        "Name": newspaper_name,
+                        "Website": website,
+                        "Twitter_Name": twitter,
+                        "Facebook": facebook,
+                        "Instagram": instagram,
+                        "Youtube": youtube,
+                        "Address": address,
+                        "Editor": editor,
+                        "Phone": phone
+                    }
+                    # Add to the list
+                    sites.append(parsed_object)
         except Exception as e:
             print(f"An error occurred in processing (usnpl) the state '{state}': {e}")
 
@@ -644,12 +687,13 @@ def download_all_datasets():
     '''
     Downloads datasets from the 7 sources.
     '''
-    download_hearst()
-    # download_meredith()
-    download_nexstar()
-    download_sinclair()
-    # download_tribune()
-    download_stationindex()
+    # download_hearst()
+    # # download_meredith()
+    # download_nexstar()
+    # download_sinclair()
+    # extract_gray()
+    # # download_tribune()
+    # download_stationindex()
     download_usnpl()
     
 if __name__ == "__main__":

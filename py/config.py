@@ -3,7 +3,7 @@ import random
 import datetime
 
 # where is data stored?
-data_dir = '../data/'
+data_dir = '../data_2023/'
 
 # intermediates
 tribune_file = os.path.join(data_dir, 'tribune.tsv')
@@ -19,7 +19,7 @@ usnpl_file = os.path.join(data_dir, 'usnpl.tsv')
 custom_station_file = os.path.join(data_dir, 'custom_additions.json')
 
 # this is the output!
-local_news_dataset_file  = os.path.join(data_dir, 'local_news_dataset_2018.csv') 
+local_news_dataset_file  = os.path.join(data_dir, 'local_news_dataset_2023.csv') 
 
 def generate_request_header():
   '''
